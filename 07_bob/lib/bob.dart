@@ -7,15 +7,17 @@ class Bob {
 
   String response(String message) {
     message = message.trim();
+    var yell = isUppercase(message);
+    var question = message.endsWith('?');
 
-    if (isUppercase(message) && message.endsWith('?')) {
-      return 'Calm down, I know what I\'m doing!';
-    } else if (isUppercase(message)) {
-      return 'Whoa, chill out!';
-    } else if (message.endsWith('?')) {
-      return 'Sure.';
-    } else if (message == '') {
+    if (message == '') {
       return 'Fine. Be that way!';
+    } else if (yell && question) {
+      return 'Calm down, I know what I\'m doing!';
+    } else if (yell) {
+      return 'Whoa, chill out!';
+    } else if (question) {
+      return 'Sure.';
     } else
       return 'Whatever.';
   }
